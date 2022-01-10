@@ -1,3 +1,3 @@
-module ch02/chitchat
+module cmd
 
 go 1.17

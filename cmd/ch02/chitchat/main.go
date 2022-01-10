@@ -6,10 +6,13 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	files := http.FileServer(http.Dir("/public"))
+	files := http.FileServer(http.Dir(config.Static))
 	mux.Handle("/static/", http.StripPrefix("/static/", files))
 
 	mux.HandleFunc("/", index)
+	mux.HandleFunc("/err", err)
+
+	mux.HandleFunc("/login", login)
 
 	server := &http.Server{
 		Addr:    "0.0.0.0:8080",
