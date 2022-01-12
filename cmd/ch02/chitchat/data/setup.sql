@@ -1,3 +1,11 @@
+drop table posts;
+
+drop table threads;
+
+drop table sessions;
+
+drop table users;
+
 create table users (
     id serial primary key,
     uuid varchar(64) not null unique,
@@ -11,7 +19,8 @@ create table sessions (
     id serial primary key,
     uuid varchar(64) not null unique,
     email varchar(255),
-    user_id integer references users(id) created_at timestamp not null
+    user_id integer references users(id),
+    created_at timestamp not null
 );
 
 create table threads (
@@ -22,7 +31,7 @@ create table threads (
     created_at timestamp not null
 );
 
-create table posts(
+create table posts (
     id serial primary key,
     uuid varchar(64) not null unique,
     body text,
